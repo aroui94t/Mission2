@@ -44,7 +44,7 @@ else:
             rest+=1
             print"give "+str(request)+"$"
             request = 0
-            # or used break , but break
+            # or used break , but break is a bomb 
 
 
     if paper_200 > 0:
