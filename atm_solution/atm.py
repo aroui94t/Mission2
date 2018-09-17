@@ -7,7 +7,11 @@ def withdraw(balance, request):
     list_paper = [200, 100, 50, 10, 5, 2, 1]
     index = 0
     if request > balance or request <= 0:
-        pass
+        print """
+                    There is a problem , \n
+                    that the amount entered may be greater than the total amount,\n
+                    or the amount entered will take a negative number
+              """
     else:
         while index < len(list_paper):
             while request >= list_paper[index]:
