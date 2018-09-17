@@ -44,26 +44,11 @@ class ATM :
         self.bank    =  name_bank
         self.balance =  balance
 
-    def withdraw(self,request):
-
-        print "="*len("Current balance = " + str(self.balance))
-        print "Welcome to " + self.bank
-        print "Current balance = " + str(self.balance)
-        print "=" * len("Current balance = " + str(self.balance))
-
-
+    def process_request(self,request):
         list_order = []
         list_paper = [200, 100, 50, 10, 5, 2, 1]
         index = 0
-
-        if request > self.balance or request <= 0:
-            print """
-                    There is a problem , \n
-                    that the amount entered may be greater than the total amount,\n
-                    or the amount entered will take a negative number
-                  """
-        else:
-            while index < len(list_paper):
+        while index < len(list_paper):
                 while request >= list_paper[index]:
                     request -= list_paper[index]
                     list_order.append(list_paper[index])
@@ -75,6 +60,23 @@ class ATM :
             print "="*len("Current balance :" + str(self.balance - sum(list_order)))
             print "Current balance :" + str(self.balance - sum(list_order))
             print "="*len("Current balance :" + str(self.balance - sum(list_order)))
+    
+    def withdraw(self,request):
+
+        print "="*len("Current balance = " + str(self.balance))
+        print "Welcome to " + self.bank
+        print "Current balance = " + str(self.balance)
+        print "=" * len("Current balance = " + str(self.balance))
+       
+        if request > self.balance or request <= 0:
+            print """
+                    There is a problem , \n
+                    that the amount entered may be greater than the total amount,\n
+                    or the amount entered will take a negative number
+                  """
+        else:
+            self.process_request(request)
+            
 # End code Workshop 10:        
 # if want how to create objects , go to file main.py         
 
