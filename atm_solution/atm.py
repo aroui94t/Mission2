@@ -1,61 +1,75 @@
 
-request = 452   # Amount to be extracted
-money   = 700   # Full amount
 
-paper_200 = 0   # count paper 200
-paper_100 = 0   # count paper 100
-paper_50  = 0   # count paper 50
-paper_10  = 0   # count paper 10
-paper_5   = 0   # count paper 5
-rest      = 0   # count rest
+# This part is for Workshop 8:
+# Start code Workshop 8:
+def withdraw(balance, request):
+    list_order = []
+    list_paper = [200, 100, 50, 10, 5, 2, 1]
+    index = 0
+    if request > balance or request <= 0:
+        pass
+    else:
+        while index < len(list_paper):
+            while request >= list_paper[index]:
+                request -= list_paper[index]
+                list_order.append(list_paper[index])
+            index+=1
+
+        for count in list_paper:
+            if list_order.count(count) >= 1:
+                print "give " + str(count)+"$ ===> number paper : " + str(list_order.count(count))
+    return "Current balance :" + str(balance - sum(list_order))
+
+print withdraw(740,424)
+# End code Workshop 8
+
+#========================================================================================================
 
 
-print "The number of amount is:"+str(money)
-if request > money or request < 0:
-    print """
-           There is a problem , \n
-           that the amount entered may be greater than the total amount,\n 
-           or the amount entered will take a negative number 
-           """
-else:
-    print "The amount that will remain in your account :" + str(money - request)
-    while request > 0:
-        if request >= 200:
-            request -= 200
-            paper_200 += 1
-            print "give 200$"
-        elif request >= 100:
-            request -= 100
-            paper_100 +=1
-            print "give 100$"
-        elif request >=50:
-            request -= 50
-            paper_50 += 1
-            print "give 50$"
-        elif request >= 10:
-            paper_10 += 1
-            request -= 10
-            print "give 10$"
-        elif request>=5:
-            request -= 5
-            paper_5 += 1
-            print "give 5$"
+# This part is for Workshop 10:
+# Start code Workshop 10:
+
+""" 
+Define class ATM :
+        methods => withdraw
+
+"""
+class ATM :
+
+    def __init__(self,name_bank,balance):
+        self.bank    =  name_bank
+        self.balance =  balance
+
+    def withdraw(self,request):
+
+        print "="*len("Current balance = " + str(self.balance))
+        print "Welcome to " + self.bank
+        print "Current balance = " + str(self.balance)
+        print "=" * len("Current balance = " + str(self.balance))
+
+
+        list_order = []
+        list_paper = [200, 100, 50, 10, 5, 2, 1]
+        index = 0
+
+        if request > self.balance or request <= 0:
+            print """
+                    There is a problem , \n
+                    that the amount entered may be greater than the total amount,\n
+                    or the amount entered will take a negative number
+                  """
         else:
-            rest+=1
-            print"give "+str(request)+"$"
-            request = 0
-            # or used break , but break is a bomb 
+            while index < len(list_paper):
+                while request >= list_paper[index]:
+                    request -= list_paper[index]
+                    list_order.append(list_paper[index])
+                index+=1
+
+            for count in list_paper:
+                if list_order.count(count) >= 1:
+                    print "give " + str(count)+"$ ===> number paper : " + str(list_order.count(count))
+        print "="*len("Current balance :" + str(self.balance - sum(list_order)))
+        print "Current balance :" + str(self.balance - sum(list_order))
+        print "="*len("Current balance :" + str(self.balance - sum(list_order)))
 
 
-    if paper_200 > 0:
-        print "count paper 200$ : "+  str(paper_200) +" papers"
-    if paper_100 > 0:
-        print "count paper 100$ : "+  str(paper_100) +" papers"
-    if paper_50 > 0:
-        print "count paper 50$ : "+ str(paper_50) + " papers"
-    if paper_10 > 0:
-        print "count paper 10$ : " + str(paper_10) + " papers"
-    if paper_5 > 0:
-        print "count paper 5$ : " + str(paper_5) +" papers"
-    if rest > 0:
-            print "rest : " + str(rest)
