@@ -72,9 +72,9 @@ class ATM :
             for count in list_paper:
                 if list_order.count(count) >= 1:
                     print "give " + str(count)+"$ ===> number paper : " + str(list_order.count(count))
-        print "="*len("Current balance :" + str(self.balance - sum(list_order)))
-        print "Current balance :" + str(self.balance - sum(list_order))
-        print "="*len("Current balance :" + str(self.balance - sum(list_order)))
+            print "="*len("Current balance :" + str(self.balance - sum(list_order)))
+            print "Current balance :" + str(self.balance - sum(list_order))
+            print "="*len("Current balance :" + str(self.balance - sum(list_order)))
 # End code Workshop 10:        
 # if want how to create objects , go to file main.py         
 
