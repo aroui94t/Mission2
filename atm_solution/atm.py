@@ -71,5 +71,7 @@ class ATM :
         print "="*len("Current balance :" + str(self.balance - sum(list_order)))
         print "Current balance :" + str(self.balance - sum(list_order))
         print "="*len("Current balance :" + str(self.balance - sum(list_order)))
+        
+# if want how to create objects , go to file main.py         
 
 
