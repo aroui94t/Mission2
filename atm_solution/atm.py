@@ -21,7 +21,7 @@ class ATM :
         self.__withdrawals_dict = {}
 
     def __add_in_withdrawals(self,paper,count):
-    	  self.__withdrawals_dict[paper]:count    
+    	  self.__withdrawals_dict[paper] = count    
 
     
     def __process_request(self,request):
@@ -70,6 +70,7 @@ class ATM :
             print "Papers extracted :"
             for paper, count in self.__withdrawals_dict.items():
                 print "paper ==> :" + str(paper), "count ==> :" + str(count)
+            self.__withdrawals_dict.clear()    
 
 
 # End code Workshop 12        
